@@ -39,14 +39,21 @@
 <!-- Content Row -->
 @foreach($articles as $article)
 <div class="row">
-    <div class="col-lg-6 mb-4">
+    <div class="col-lg-12 mb-4">
         <!-- Approach -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">{{ $article->title }}</h6>
             </div>
-            <div class="card-body">                        <img src="/article_images/{{ $article->image_path }}" style="display: block; max-width: 200px; width: 100%">
-{{ $article->details }}</div>
+            <div class="card-body">
+                <div>Published by - {{ $randomArticle->name }}</div>
+                <div>
+                    Published at - {{ $randomArticle->created_at }}
+                </div>
+            </div>
+            <div class="card-body">
+                <img src="/article_images/{{ $article->image_path }}" style="display: block; max-width: 200px; width: 100%">
+                {{ $article->details }}</div>
         </div>
 
     </div>

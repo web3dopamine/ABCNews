@@ -16,6 +16,8 @@ class LandingController extends Controller
 
         $articleCount = \DB::table('articles')->count();
 
+        $randomArticle = \DB::table('articles')->join('users', 'users.id', 'articles.user_id')->orderByRaw("RAND()")->first();
+
         if ($request->id) {
             $articles = \DB::table('articles')->where('category_id', $request->id)->orderBy('id', 'DESC')->get();
         } else {
@@ -28,6 +30,7 @@ class LandingController extends Controller
             'articleCount' => $articleCount,
             'articles' => $articles,
             'categories' => $categories,
+            'randomArticle' => $randomArticle,
         ]);
     }
 }

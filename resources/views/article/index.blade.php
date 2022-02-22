@@ -4,7 +4,7 @@
 <div class="container">
   <h2>Article List</h2>
   <br><br>
-  <table class="table table-bordered">
+  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
     <thead>
       <tr>
         <th>Headline</th>

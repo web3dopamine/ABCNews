@@ -19,12 +19,19 @@ class DashboardController extends Controller
 
         $randomArticle = \DB::table('articles')->join('users', 'users.id', 'articles.user_id')->orderByRaw("RAND()")->first();
 
+        if ($request->id) {
+            $articles = \DB::table('articles')->where('category_id', $request->id)->orderBy('id', 'DESC')->get();
+        } else {
+            $articles = \DB::table('articles')->orderBy('id', 'DESC')->get();
+        }
+
         return view('dashboard', [
             'user' => $user,
             'userCount' => $userCount,
             'categoryCount' => $categoryCount,
             'articleCount' => $articleCount,
             'randomArticle' => $randomArticle,
+            'articles' => $articles,
         ]);
     }
 }
